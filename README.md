@@ -7,22 +7,22 @@
 <div align="center">
   <!-- Paper Link -->
   <a href="TBD">
-    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper" height="22">
+    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper" height="20">
   </a>
   <!-- HuggingFace Papers -->
   <a href="TBD">
-    <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="22">
+    <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="20">
   </a>
   <!-- HuggingFace Models -->
   <a href="https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1">
-    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Pretrain--v0.1-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Pretrain-v0.1" height="22">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Pretrain--v0.1-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Pretrain-v0.1" height="20">
   </a>
   <a href="https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1">
-    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Chat--v0.1-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Chat-v0.1" height="22">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Chat--v0.1-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Chat-v0.1" height="20">
   </a>
   <!-- HuggingFace Dataset -->
   <a href="https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1">
-    <img src="https://img.shields.io/badge/Dataset-AR--Omni--Instruct--v0.1-4c1?style=for-the-badge" alt="AR-Omni-Instruct-v0.1" height="22">
+    <img src="https://img.shields.io/badge/Dataset-AR--Omni--Instruct--v0.1-4c1?style=for-the-badge" alt="AR-Omni-Instruct-v0.1" height="20">
   </a>
 
   <!-- Optional: overview figure -->
