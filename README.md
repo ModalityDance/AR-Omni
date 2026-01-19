@@ -1,505 +1,441 @@
-> [!NOTE]
-> 🪐 **Internal Template Notice (v1.1)**  
->  
-> This README serves as a **demonstration template (version 1.1)** for internal use within the **ModalityDance**.  
->  
-> **Administrator:** [Hongru Cai](mailto:henry.hongrucai@gmail.com)
->
-> **Update date**: 2026.1.9
->  
-> **Usage scope:** Internal use only. Please do not redistribute or share externally.
-> 
-> If you have questions, suggestions, or proposed improvements to this template, feel free to contact me.
-> 
-> Use GitHub callouts (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`) **selectively** to help readers understand critical information.
-> 
-> Some componets may not render properly in VS Code preview, copy to preview on GitHub if needed.
-
-> [!IMPORTANT]
-> 🪐 **About This Template**  
->  
-> This template provides a **minimal, example-based framework** for releasing research code.  
-> It is intentionally lightweight and designed to be extended with additional components, including:
-> - more demos or runnable examples,
-> - interactive or web-based interfaces,
-> - detailed documentation or tutorials,
-> - PyPI packages or other distribution formats,
-> - or any other project-specific features.
-
-> [!TIP]
-> 🪐 **Customization & Extension**  
->  
-> All visual elements (e.g., icons, styles, figures, layouts) are **fully customizable**.  
-> Feel free to replace or redesign them to better fit your project.
-
-> [!WARNING]
-> 🪐 **Before Public Release**  
-> 
-> - Ensure that the final README contains only **project-specific content**.  
-> - Verify that **all links are clickable and correctly resolved** (paper, code, data, demos).  
-> - Check that **all figures and images render correctly** (paths, formats, and visibility).  
-> - Confirm that the **citation section is complete and up to date**, and matches the final paper version.  
-> - Confirm that a **LICENSE file is present**, and that the information inside the file is accurate.  
-> - Verify that the **project page link is correct and up to date**.
-> - Check that the **News section is current**, and remove any placeholder entries.
-> - Please **remove all instructional comments and internal notes** in this README. 
-
-
-
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="./assets/LOGO.png" alt="Project Logo" width="300">
-  <h1 align="center">Project Name: Short tagline</h1>
+  <h1 align="center">AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation</h1>
 </div>
 
 <div align="center">
-
-  <!-- Project Page -->
-  <a href="{project_page_url}">
-    <img src="https://img.shields.io/badge/Project-Page-6a5acd?style=for-the-badge" alt="Project Page">
-  </a>
-
   <!-- Paper Link -->
-  <a href="{paper_url}">
-    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper">
+  <a href="TBD">
+    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper" height="22">
   </a>
-
+  <!-- HuggingFace Papers -->
+  <a href="TBD">
+    <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="22">
+  </a>
   <!-- HuggingFace Models -->
-  <a href="{huggingface_url}">
-    <img src="https://img.shields.io/badge/HuggingFace-Models-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Models">
+  <a href="https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Pretrain--v0.1-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Pretrain-v0.1" height="22">
+  </a>
+  <a href="https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Chat--v0.1-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Chat-v0.1" height="22">
+  </a>
+  <!-- HuggingFace Dataset -->
+  <a href="https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1">
+    <img src="https://img.shields.io/badge/Dataset-AR--Omni--Instruct--v0.1-4c1?style=for-the-badge" alt="AR-Omni-Instruct-v0.1" height="22">
   </a>
 
-  <!-- Optional Dataset Badge -->
-  <a href="{dataset_url}">
-    <img src="https://img.shields.io/badge/Dataset-Available-4c1?style=for-the-badge" alt="Dataset">
-  </a>
-
-  <!-- Optional Community Badges -->
-  <a href="{slack_or_discord_or_feishu}">
-    <img src="https://img.shields.io/badge/Community-Join-07c160?style=for-the-badge&logo=wechat&logoColor=white" alt="Community">
-  </a>
-
+  <!-- Optional: overview figure -->
+  <img src="./assets/overview.png" alt="overview">
 </div>
 
+---
 
-<!--
-Overview
+Welcome to **AR-Omni**! 👋 AR-Omni is a *single-decoder*, *single-token-stream* autoregressive any-to-any model that generates **text**, **images**, and **speech** without expert decoders. It uses task-aware loss reweighting, token-level perceptual alignment for image tokens, and a finite-state decoding machine to balance modality learning, improve visual fidelity, and trade off stability vs. creativity in inference time.
 
-Points:
+---
 
-1. A short paragraph (2–4 sentences) describing:
-    - What the project is.
-    - The main purpose or capability.
-    - What benefit users get.
-    - The scope or application scenario.
-    - The primary components included in this repository.
+## 🪐 Key Features
 
-2. A "Key Features" section.  
-   Each feature should include:
-    - A short title (e.g., "Modular Design", "Fast Training").
-    - A 1–2 sentence explanation of what the feature provides and why it matters.
-   
-3. Add more sections if needed.
+> [!IMPORTANT]
+> Pure autoregressive “Omni” without expert decoders. AR-Omni uses a single Transformer decoder to support autoregressive text and image generation, as well as real-time speech synthesis (as measured by the TTS task).
 
-4. A main figure image placed under assets/, e.g., assets/overview.png.  
-   This image should visually summarize the system or framework.
+🧭 **Unified any-to-any AR paradigm**  
+A single token stream with next-token prediction and one decoder, natively handling text, images, and speech—while preserving the purity of autoregressive modeling.
 
--->
+⚖️ **Modality imbalance mitigation**  
+Task-aware loss reweighting to prevent training from being dominated by a subset of modalities or tasks.
 
-Welcome to **Project Name**! 👋Project Name is a flexible and scalable framework designed for **core purpose, e.g., multimodal retrieval, generative search, LLM-based reasoning**.  It offers a clean and modular design, making it easy for researchers and developers to build, extend, and evaluate advanced models and pipelines. This project provides an implementation of {main contribution or goal}, including training scripts, evaluation pipelines, and optional demo resources.
+🎛️ **Stability–creativity trade-offs**  
+A finite-state decoding machine that selects different decoding strategies for different sub-tasks during inference.
 
+🗣️ **Real-time speech synthesis**  
+Efficient real-time speech synthesis (as measured by the TTS task).
 
-### 🪐 Key Features
+---
 
-🧭 **Feature 1 Title**  
-Describe the core capability enabled by this feature and its role in the overall system.
+## 🔥 News
+- **2026.01** Initial release of AR-Omni v0.1.
 
-🌌 **Feature 2 Title**  
-Explain how this component improves effectiveness, efficiency, or modeling flexibility.
+---
 
-🧩 **Feature 3 Title**  
-Describe how this design choice supports extensibility, ablation, or future research.
+## Roadmap
 
+- [x] AR-Omni-Pretrain checkpoint 
+- [x] AR-Omni-Chat checkpoint 
+- [x] Instruction-tuning dataset  
+- [x] Training code and recipes
+- [ ] Paper link  
+- [ ] Streaming inference
+- [ ] Public demo / gradio / space
 
-
-### More sections if you want ...
-
-
-<div align="center">
-  <figure>
-    <img src="./assets/overview.png" alt="Overview" style="max-width: 100%; height: auto;">
-    <br>
-    <figcaption><em>Quick Overview of Project Name.</em></figcaption>
-  </figure>
-</div>
-
-
-<!--
-News 
-
-Points:
-1. Include chronological updates about the project.
-2. Each news entry should have:
-   - A date in [YYYY.MM] or [YYYY, MMM DD] format.
-   - A short highlight sentence.
-3. Optional but encouraged:
-   - Bullet lists for detailed updates.
-   - Links to papers, project pages, demos, datasets.
-   - Emojis to increase readability.
-
--->
-
-## 🔥 News 
-
-<div style="max-height: 240px; overflow-y: auto;">
-
-- **[2025.xx]** 📢📢 Exciting news! Our project has been accepted as a Spotlight paper at NeurIPS 2025!
-
-- **[2025.xx]** 🎉🎉 We released a major upgrade including new benchmarks, UI, and documentation.
-  - 📄 Paper: <a href="{paper_link}">arXiv</a>
-  - 📊 Benchmark Suite: <a href="{benchmark_link}">Link</a>
-  - 🖥️ Web UI: {description}
-
-- **[2025.xx]** 🎉🎉Initial release of the project.
-
-</div>
-
-
-<!--
-Table of Contents
-
-REQUIRED:
-1. Quick Start
-2. How It Works (Method / Framework Overview)
-3. Community
-4. Acknowledgements
-5. Citation
-
-OPTIONAL:
-1. Documentation
-2. TODO List / Roadmap
-3. Examples
-4. How to Use
-5. More sections as needed.
-
--->
+---
 
 ## 📑 Table of Contents <span id="table-of-contents"></span>
 
-
-* <a href='#quick-start'>🚀 Quick Start</a>
-  * <a href='#installation'>Installation</a>
-  * <a href='#data'>Data</a>
-  * <a href='#running'>Running</a>
-<!-- * <a href='#examples'>⬇️ Examples</a> -->
-* <a href='#how-it-works'>✨ How It Works</a>
-<!-- * * <a href='#documentation'>📖 Documentation</a> -->
-<!-- * <a href='#todo'>📝 TODO List</a> -->
-* <a href='#community'>🤝 Community</a>
-* <a href='#acknowledgements'>🌱 Acknowledgements</a>
-* <a href='#citation'>📚 Citation</a>
-
-
-<!--
-Quick Start (Very Detailed Guide)
-
-REQUIRED:
-1. Environment Installation
-   - Must include conda or virtualenv setup.
-   - Must include Python version requirements.
-   - Must list installation commands (pip or requirements.txt).
-   - Must include GPU/CPU dependency notes if necessary.
-
-2. Dataset Preparation
-   - Instructions for downloading datasets.
-   - Show expected folder structure.
-   - Provide scripts if applicable.
-   - If dataset is on HuggingFace, include "huggingface-cli" usage.
-
-3. Run the Project
-   - Must include detailed commands to run training and/or inference.
-   - Should include training or inference example.
-   - Should be copy-paste friendly.
-   - Must can replicate your main results using these instructions.
-
-OPTIONAL:
-1. API Keys Setup
-   - Required only if project calls external APIs (OpenAI, HF Inference, etc.).
-   - Provide environment variable examples: export, .env file, etc.
-
-2. Pretrained Checkpoints
-   - Links to ckpts (HF Hub, Google Drive, etc.)
-   - Instructions for loading the checkpoint.
-
-3. Launch UI / Demo
-   - Streamlit, Gradio, Web UI—add steps if relevant.
-
-4. Additional Examples
-   - Python code snippets, CLI examples, or config-based usage.
-
-5. Other points as needed.
-
--->
+* [🚀 Quick Start](#quick-start)
+  * [1. Installation](#installation)
+  * [2. Inference](#inference)
+    * [Checkpoints](#inference-ckpt)
+    * [AR-Omni-Pretrain](#inference-pretrain)
+    * [AR-Omni-Chat](#inference-chat)
+  * [3. Training](#training)
+    * [Data](#training-data)
+    * [Pretrain](#training-pretrain)
+    * [Instruction Tuning](#training-sft)
+* [✨ How It Works](#how-it-works)
+* [🗂️ Project Structure](#project-structure)
+* [🌱 Acknowledgements](#acknowledgements)
+* [📚 Citation](#citation)
+---
 
 ## 🚀 Quick Start <span id="quick-start"></span>
 
-
 ### 1. Installation <span id="installation"></span>
-
-#### **Conda (recommended)**
+**General requirements.** Except for basic libs, we vendor two editable libraries in this repo: accelerate and transformers.
 
 ```bash
-conda create -n {env_name} python=3.10 -y
-conda activate {env_name}
+python -m venv .venv
+source .venv/bin/activate
+
+pip install -U pip wheel setuptools
+
 pip install -r requirements.txt
+
+# Install the vendored libs
+pip install -e ./transformers
+pip install -e ./accelerate
 ```
 
-#### **Pip + Virtualenv**
+**CosyVoice.** Please configure the CosyVoice environment (PyTorch/CUDA/audio dependencies, model assets, etc.) by following the official guide:
+
+- https://github.com/FunAudioLLM/CosyVoice
+
+---
+
+### 2. Inference <span id="inference"></span>
+#### Checkpoints <span id="inference-ckpt"></span>
+
+- **AR-Omni-Pretrain-v0.1**: https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1  
+- **AR-Omni-Chat-v0.1**: https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1
+
+#### AR-Omni-Pretrain
+
+Below are four commands for the four core tasks.  
+
+---
+
+##### (1) Text-to-Image (T2I)
 
 ```bash
-python3 -m venv {env_name}
-source {env_name}/bin/activate
-pip install -r requirements.txt
+python inference/inference_pretrain.py \
+  --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --out_dir ./outputs/t2i \
+  --device 0 \
+  t2i \
+  --text "a bunch of ripe strawberries on a plate" \
+  --temp 1.0 \
+  --guidance_scale_image 1.32 \
+  --out_name t2i_test.png
 ```
 
-#### **Hardware Requirements (recommended to fill)**
+##### (2) Image Captioning
+```bash
+python inference/inference_pretrain.py \
+  --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --out_dir ./outputs/caption \
+  --device 0 \
+  caption \
+  --image_path inference/demo_test.jpg \
+  --instruction "Describe this image in detail." \
+  --max_gen_len 256
+```
 
-* GPU: **{e.g., 16GB VRAM minimum}**
-* Python: **3.9 / 3.10**
-* CUDA: **{version}**
-* Frameworks: **PyTorch {version}, Transformers {version}, etc.**
+##### (3) ASR
+```bash
+python inference/inference_pretrain.py \
+  --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --out_dir ./outputs/asr \
+  --device 0 \
+  asr \
+  --speech_path inference/ref.wav \
+  --wavtokenizer_root /path/to/WavTokenizer \
+  --wavtokenizer_config /path/to/wavtokenizer.yaml \
+  --wavtokenizer_ckpt /path/to/wavtokenizer.ckpt \
+  --instruction "Can you please convert this speech into written text?" \
+  --max_seq_len 1024
+```
 
+##### (4) TTS
+```bash
+python inference/inference_pretrain.py \
+  --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --out_dir ./outputs/tts \
+  --device 0 \
+  tts \
+  --text "Good afternoon! How are you today?" \
+  --instruction "Convert this text into speech." \
+  --wavtokenizer_root /path/to/WavTokenizer \
+  --wavtokenizer_config /path/to/wavtokenizer.yaml \
+  --wavtokenizer_ckpt /path/to/wavtokenizer.ckpt \
+  --max_gen_len 256 \
+  --out_name tts.wav
+```
 
-### 2. Data Preparation <span id="data"></span>
+---
 
-#### **Download datasets**
+#### AR-Omni-Chat (Interleaved Any-to-Any Conversation) <span id="inference-chat"></span>
+> [!NOTE]
+> In AR-Omni-v0.1, no real speech recordings were included in training. We recommend testing with clean, clear speech. We provide `speech2tokens.py`, a CosyVoice-based TTS input script for quick use and as a reference for development. We will open-source the next version as soon as possible. The next release is optimized for real-world speech scenarios.
+
+`inference_chat.py` runs dialog(s) described in a JSON/JSONL file and saves decoded text / images / speech generation.
+It supports:
+- **(Recommended for now) Text → (CosyVoice2 TTS) → Input** 
+- **WAV → Input**
+- Optional **image(s)** per turn via `image_paths`
+
+---
+
+##### (1) Run command
+
+> Requires **CosyVoice2**.  
+> If CosyVoice is not installed as a package, set `PYTHONPATH` to include its repo.
 
 ```bash
-bash scripts/download_data.sh
+PYTHONPATH=/path/to/CosyVoice/third_party/Matcha-TTS:/path/to/CosyVoice${PYTHONPATH:+:$PYTHONPATH} \
+python3 inference/inference_chat.py \
+  --input ./infer_test.json \
+  --output_dir ./test_results \
+  --model_root /path/to/converted_model_root \
+  --hf_tokenizer /path/to/converted_model_root \
+  --cosyvoice_model_dir /path/to/CosyVoice2-0.5B \
+  --wavtokenizer_cfg_path /path/to/wavtokenizer.yaml \
+  --wavtokenizer_ckpt_path /path/to/wavtokenizer.ckpt \
+  --save_speech --save_images
 ```
 
-or download manually from:
-
-* {dataset_source_1}
-* {dataset_source_2}
-
-#### **Expected folder structure**
-
-```plaintext
-data/
-  ├── train/
-  ├── val/
-  ├── test/
-  └── metadata.json
-```
-
-#### **Optional: preprocess data**
-
-```bash
-python scripts/preprocess.py --input data/raw --output data/processed
-```
-
-
-### 3. Running <span id="running"></span>
-
-#### **Basic inference**
-
-```bash
-python scripts/inference.py --input example.txt --output result.json
-```
-
-#### **Training example**
-
-```bash
-bash scripts/train.sh
-```
-
-or
-
-```bash
-python train.py --config configs/default.yaml
-```
-
-#### **Evaluation**
-
-```bash
-python evaluate.py --checkpoint checkpoints/{ckpt_name}.pt
-```
-
-
-#### 4. Other optional setups
-
-
-<!--
-How It Works (Methods Overview)
-
-
-GOALS OF THIS SECTION:
-1. Provide a clear and brief explanation of how the system or method works.
-2. Make this understandable even for readers who do not yet know the technical details.
-
-Points:
-1. A high-level description of the system architecture or method.
-2. Key components/modules and their roles.
-3. A step-by-step workflow of the main process.
-4. Figures or diagrams to illustrate the method.
-
-Or:
-
-you can organize in your own way as long as it meets the goals above!!!
-
--->
-
-## ✨ How It Works <span id="how-it-works"></span>
-
-🪐 **Project Name** is built around a modular research pipeline for **{core capability}**, where each component corresponds to a well-defined stage in the overall method.  
-The system separates representation, reasoning, and output stages into independent modules, allowing controlled experimentation and analysis.  
-This design enables flexible replacement of individual components without affecting the rest of the pipeline.
-
-At a high level, the workflow proceeds as follows:
-
-1. **{Step 1: Input processing}** — {Describe how raw inputs are converted into model-friendly representations.}  
-2. **{Step 2: Core algorithm or modeling stage}** — {Explain how the main computation or retrieval happens.}  
-3. **{Step 3: Final output generation}** — {Describe how results are composed, ranked, or produced.}
-
-<div align="center">
-  <figure>
-    <img src="./assets/{method-figure.png}" alt="Method Overview" style="max-width: 100%; height: auto;">
-    <br>
-    <figcaption><em>Method overview of {Project Name}.</em></figcaption>
-  </figure>
-</div>
-
-
-<!--
-Community
-
-REQUIRED:
-1. Contributors section or GitHub contributors graph.
-2. Star history chart.
-3. A short paragraph encouraging engagement with the project.
-
-OPTIONAL:
-1. Social groups (Slack, Discord, WeChat, Feishu).
-2. Issue tracker link (GitHub Issues).
-3. Contribution guidelines (link to CONTRIBUTING.md if exists).
-
--->
-
-## 🤝 Join the Community <span id="community"></span>
-
-We welcome researchers, developers, and enthusiasts to join the **Project Name** community.  
-You can participate by reporting issues, contributing features, or sharing feedback to help us improve and grow the project. 
-
-<!-- Optional social groups -->
-<!-- - <a href="{slack_link}">Join our Slack workspace</a> — Ideal for research discussions and development updates.  
-- <a href="{discord_link}">Join our Discord server</a> — Community-driven space for questions, ideas, and feedback.  
-- <a href="{wechat_or_feishu_link}">Join our WeChat / Feishu group</a> — Regional/community group (optional).   -->
-
-<div align="center">
-
-<!-- Contributors -->
-**We thank all our contributors for their valuable contributions.**
-<a href="https://github.com/xxx/xxx/contributors">
-  <img src="https://contrib.rocks/image?repo=xxx/xxx" />
-</a>
-
-<br/><br/>
-
-<!-- Star history chart -->
-[![Star History Chart](https://api.star-history.com/svg?repos=xxx/xxx&type=Date)](https://star-history.com/xxx/xxx&Date)
-
-</div>
-
-
-<!--
-Acknowledgements & Citation
-
-
-ACKNOWLEDGEMENTS:
-1. Credit any external libraries, toolkits, or frameworks the project depends on.
-2. Cite related repositories if this project builds upon or is inspired by them.
-3. Acknowledge dataset sources if used.
-4. Claim on licensing or usage rights.
-  1. MIT License (default):
-     Use this for most research code releases when no usage restrictions are required.
-  2. Apache License 2.0:
-     Use this for larger frameworks or systems when explicit patent protection is desired.
-  3. Non-Commercial (NC):
-     Use this only when the project or data must restrict commercial usage.
-5. Acknowledge funding, labs, collaborators, or mentors (optional).
-
-
-CITATION:
-1. Provide BibTeX for the project’s paper.
-2. If the paper is not yet published, use an arXiv placeholder.
-
--->
-
-
-## 🌱 **Acknowledgements** <span id="acknowledgements"></span>
-
-An example: We would like to thank the contributors, open-source projects, and research communities whose work made **{Project Name}** possible. This project builds upon ideas, tools, and datasets developed by the broader machine learning and information retrieval ecosystem. 
-
-This project is licensed under the **License Name**. Please refer to the LICENSE file for more details.
-
-### 🔗 Related Projects
-
-> **Note**: Please prioritize our own related papers. If additional projects are needed, refer to previous papers by group members to check whether they are directly relevant or comparable.
-
-
-<div align="center">
-
-<table>
-<tr>
-<td align="center">
-  <b>🌟 Related Project 1</b><br/>
-  <a href="{project_link_1}">{project_link_1}</a>
-</td>
-<td align="center">
-  <b>🚀 Related Project 2</b><br/>
-  <a href="{project_link_2}">{project_link_2}</a>
-</td>
-<td align="center">
-  <b>🔧 Related Project 3</b><br/>
-  <a href="{project_link_3}">{project_link_3}</a>
-</td>
-</tr>
-</table>
-
-</div>
-
-
-## 📚 **Citation** <span id="citation"></span>
-
-If you use **{Project Name}** in your research or applications, please consider citing:
-
-```bibtex
-@article{yourproject2025,
-  title        = {{Project Name}: {Short descriptive subtitle}},
-  author       = {Your Name and Collaborator Name and Others},
-  journal      = {arXiv preprint arXiv:{xxxx.xxxxx}},
-  year         = {2025}
+Common optional flags:
+- `--greedy` : greedy decode for text
+- `--txt_temp`, `--txt_top_p` : sampling settings for text
+- `--img_temp` : sampling temp for image tokens
+- `--bandwidth_id` : wavtokenizer bandwidth id
+
+---
+
+##### (2) Input schema
+
+You can pass:
+- a single dialog: `{"dialog_id": "...", "turns": [ ... ]}`
+- a list of dialogs: `[{"dialog_id": "...", "turns": [...]}, ...]`
+- a list of turns: `[{turn}, {turn}, ...]`
+
+Each **turn** must provide **either**:
+- `text`: user text will be converted to speech and then tokenized
+- `wav_path`: directly tokenize a WAV file
+
+Optional fields per turn:
+- `image_paths`: list of image paths for this turn
+- `user_append_text`: appended instruction after vocal tokens
+- `speaker_wav`: reference speaker WAV for CosyVoice2
+- `prompt_text`: optional prompt text for speaker/style
+- `silence_head_sec`, `silence_tail_sec`: silence padding seconds
+- `silence_head_tokens`, `silence_tail_tokens`: explicit silence token padding
+- `reset`: reset conversation history before this turn
+
+---
+
+##### (3) Example input
+
+Create `infer_test.json`:
+
+```json
+{
+  "dialog_id": "demo_0001",
+  "turns": [
+    {
+      "text": "Hi! Please describe the image and answer in one paragraph.",
+      "image_paths": ["inference/demo_test.jpg"],
+      "user_append_text": "Please acknowledge the user's vocal input, create a textual response.",
+      "reset": true
+    }
+  ]
 }
 ```
 
-<!-- Modify the repository URL accordingly. -->
+---
+
+##### (4) Outputs
+
+Artifacts are saved under:
+
+- `output_dir/<dialog_id>/turn_<index>_<uid>/decoded_text.txt`
+- `output_dir/<dialog_id>/turn_<index>_<uid>/meta.json`
+- optional images/speech if enabled:
+  - `.../*_seg*_img*_.png`
+  - `.../*_seg*_speech_*.wav`
+- a global log:
+  - `output_dir/batch_log.json`
+
+---
+
+### 3. Training <span id="training"></span>
+
+We provide two training stages: pretrain and instruction tuning.
+
+#### 3.1 Data <span id="training-data"></span>
+
+AR-Omni is trained on **tokenized multimodal sequences**. In both stages, the multimodal content has already been converted into **discrete tokens** and can be fed directly to the autoregressive model.
+
+- **Pretrain data**: built from public corpora at large scale. Due to the dataset size and distributed sources, we do not host a packaged pretrain dataset in this repo. Please refer to the paper for the data recipe and obtain the open-source corpora accordingly.
+- **Instruction tuning data**: our open-source release is provided as tokenized multimodal instruction data:
+  - https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1
+
+---
+
+#### 3.2 Pretrain <span id="training-pretrain"></span>
+
+```bash
+cd training/pretrain
+
+deepspeed --num_gpus 8 pretrain.py \
+  --model_path /path/to/base_model \
+  --output_path /path/to/output_pretrain_ckpt \
+  --dataset_dir /path/to/pretrain_jsonl_shards \
+  --deepspeed_config ds_config.json \
+  --learning_rate 1e-5 \
+  --gradient_accumulation_steps 1 \
+  --response_weighted_tasks "image_caption,speech_to_text" \
+  --response_seg_weight 2.0 \
+  --perception_weight 1.0
+```
+
+Common options:
+- `--resume_from_checkpoint /path/to/ckpt`
+- `--skip_shards N --skip_samples N`
+
+---
+
+#### 3.3 Instruction Tuning <span id="training-sft"></span>
+
+```bash
+cd training/instruction-tuning
+
+deepspeed --num_gpus 8 sft.py \
+  --data_path /path/to/AR-Omni-Instruct-v0.1.parquet \
+  --model_path /path/to/pretrained_or_base_model \
+  --output_path /path/to/output_sft_ckpt \
+  --deepspeed_config /path/to/ds_config.json \
+  --learning_rate 1e-5 \
+  --gradient_accumulation_steps 1 \
+  --sl_project YOUR_PROJECT \
+  --sl_experiment YOUR_EXPERIMENT \
+  --max_length 2048 \
+  --segment_loss_weight 1.0 \
+  --global_weight 1.0
+```
+
+Common options:
+- `--resume_from_checkpoint /path/to/ckpt`
+- `--sl_key YOUR_SWANLAB_KEY` (optional)
+
+
+
+
+---
+
+## ✨ How It Works <span id="how-it-works"></span>
+
+AR-Omni is a unified any-to-any model in the autoregressive paradigm **without** expert decoders.
+
+- **One** decoder, **one** token stream, **one** objective
+- Multimodal generation is completely formulated as standard next-token prediction over an interleaved sequence.
+
+Three practical issues in unified AR modeling and our fixes:
+
+1) **Modality imbalance** → task-aware loss reweighting.
+   Unified AR training can be dominated by modalities with longer token budgets. We use a Weighted NTP objective that upweights task-relevant response tokens, keeping optimization aligned with the intended outputs and preventing skewed learning in unified training.
+
+2) **Visual fidelity** → lightweight token-level perceptual alignment loss for image tokens.  
+   Cross-entropy provides exact-match supervision but lacks geometric awareness in discrete visual codes. We add a small perceptual alignment loss that aligns hidden states to a frozen image embedding space, encouraging visually coherent structures even when token-level matches are imperfect.
+
+3) **Stability–creativity trade-offs** → finite-state decoding with task-aware strategy switching.  
+   Different tasks prefer different decoding behaviors. We use a finite-state decoding machine that switches strategies within one generation, using greedy decoding for deterministic subtasks and sampling for open-ended generation, avoiding a one-size-fits-all decoding rule.
+
+
+---
+
+## 🗂️ Project Structure <span id="project-structure"></span>
+
+```plaintext
+.
+├── README.md
+├── LICENSE
+├── requirements.txt
+│
+├── assets/
+│   ├── LOGO.png
+│   └── overview.png
+│
+├── training/
+│   ├── pretrain/
+│   │   ├── pretrain.py            # entry
+│   │   ├── pretrain_trainer.py
+│   │   ├── perception.py
+│   │   └── ds_config.json
+│   └── instruction-tuning/
+│       ├── sft.py                 # entry
+│       ├── trainer.py
+│       └── perception.py
+│
+├── inference/
+│   ├── inference_pretrain.py      # entry
+│   ├── inference_chat.py          # entry
+│   ├── speech2tokens.py
+│   ├── infer_test.json
+│   ├── demo_test.jpg
+│   └── ref.wav
+│
+├── accelerate/
+└── transformers/
+```
+
+---
+
+## 🌱 Acknowledgements <span id="acknowledgements"></span>
+
+We thank the open-source projects and research community that made this work possible.
+
+<!-- Acknowledgement tags (badges) --> 
+[![Anole](https://img.shields.io/badge/Model-Anole-blue?style=flat&logo=github)](https://github.com/GAIR-NLP/anole) [![Anole_Training](https://img.shields.io/badge/Code-thinking--with--generated--images-blue?style=flat&logo=github)](https://github.com/GAIR-NLP/thinking-with-generated-images) [![Training%20Experience](https://img.shields.io/badge/Training%20Experience-ICLR%20Blog-blue?style=flat&logo=gitbook)](https://iclr-blogposts.github.io/2025/blog/fine-tuning-token-based-large-multimodal-models/) [![Training Framework](https://img.shields.io/badge/Fine--tuning-Transformers-blue?style=flat&logo=github)](https://github.com/huggingface/transformers) [![Training%20Experience](https://img.shields.io/badge/Training%20Experience-AnyGPT-blue?style=flat&logo=github)](https://github.com/OpenMOSS/AnyGPT) [![Instruction%20Data](https://img.shields.io/badge/Data-AnyInstruct-blue?style=flat&logo=huggingface)](https://huggingface.co/datasets/OpenMOSS-Team/AnyInstruct) [![Instruction%20Data](https://img.shields.io/badge/Data-Mini--Omni-blue?style=flat&logo=huggingface)](https://huggingface.co/datasets/gpt-omni/VoiceAssistant-400K)
+
+This project is licensed under the **MIT License**. It also complies with the licenses of referenced third-party projects and dependencies. Please refer to the LICENSE file for more details.
+
+---
+
+## 📚 Citation <span id="citation"></span>
+
+If you use **AR-Omni** in your research or applications, please consider citing:
+
+```bibtex
+@misc{aromni2026,
+  title        = {AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation},
+  author       = {TBD},
+  year         = {2026},
+  note         = {TBD: arXiv/URL}
+}
+```
+
+---
 
 <div align="center">
-
-<a href="https://github.com/{github_org}/{repo_name}">
-  <img src="https://img.shields.io/badge/⭐ Star%20us%20on%20GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-
-<a href="https://github.com/{github_org}/{repo_name}/issues">
-  <img src="https://img.shields.io/badge/🐞 Report%20Issues-e74c3c?style=for-the-badge&logo=github" />
-</a>
-
-<a href="https://github.com/{github_org}/{repo_name}/discussions">
-  <img src="https://img.shields.io/badge/💬 Discussions-20c997?style=for-the-badge&logo=github" />
-</a>
-<br/>
-⭐ <b>Thank you for visiting {Project Name}!</b> ⭐
-
+  <a href="https://github.com/ModalityDance/AR-Omni">
+    <img src="https://img.shields.io/badge/⭐ Star%20us%20on%20GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://github.com/ModalityDance/AR-Omni/issues">
+    <img src="https://img.shields.io/badge/🐞 Report%20Issues-e74c3c?style=for-the-badge&logo=github" />
+  </a>
 </div>
