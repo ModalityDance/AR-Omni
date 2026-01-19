@@ -31,7 +31,7 @@
 
 ---
 
-Welcome to **AR-Omni**! 👋 AR-Omni is a *single-decoder*, *single-token-stream* autoregressive any-to-any model that generates **text**, **images**, and **speech** without expert decoders. It uses task-aware loss reweighting, token-level perceptual alignment for image tokens, and a finite-state decoding machine to balance modality learning, improve visual fidelity, and trade off stability vs. creativity in inference time.
+Welcome to **AR-Omni**! 👋 AR-Omni is a *single-decoder*, *single-token-stream* autoregressive any-to-any model that generates **text**, **images**, and **speech** without expert decoders. It uses task-aware loss reweighting, token-level perceptual alignment for image tokens, and a finite-state decoding machine to balance modality learning, improve visual fidelity, and trade off stability vs. creativity during inference.
 
 ---
 
@@ -190,7 +190,7 @@ python inference/inference_pretrain.py \
 
 #### AR-Omni-Chat (Interleaved Any-to-Any Conversation) <span id="inference-chat"></span>
 > [!NOTE]
-> In AR-Omni-v0.1, no real speech recordings were included in training. We recommend testing with clean, clear speech. We provide `speech2tokens.py`, a CosyVoice-based TTS input script for quick use and as a reference for development. We will open-source the next version as soon as possible. The next release is optimized for real-world speech scenarios.
+> In AR-Omni-v0.1, no real speech recordings were included in training. We recommend testing with clean, clear speech. We provide `speech2tokens.py`, a CosyVoice-based TTS input script for quick use and as a development reference. We will open-source the next version as soon as possible. The next release is optimized for real-world speech scenarios.
 
 `inference_chat.py` runs dialog(s) described in a JSON/JSONL file and saves decoded text / images / speech generation.
 It supports:
@@ -257,7 +257,7 @@ Create `infer_test.json`:
   "dialog_id": "demo_0001",
   "turns": [
     {
-      "text": "Hi! Please describe the image and answer in one paragraph.",
+      "text": "Describe the image in detail.",
       "image_paths": ["inference/demo_test.jpg"],
       "user_append_text": "Please acknowledge the user's vocal input, create a textual response.",
       "reset": true
@@ -290,7 +290,7 @@ We provide two training stages: pre-training and instruction tuning.
 
 AR-Omni is trained on **tokenized multimodal sequences**. In both stages, the multimodal content has already been converted into **discrete tokens** and can be fed directly to the autoregressive model.
 
-- **Pretrain data**: built from public corpora at large scale. Due to the dataset size and distributed sources, we do not host a packaged pretrain dataset in this repo. Please refer to the paper for the data recipe and obtain the open-source corpora accordingly.
+- **Pretrain data**: built from public corpora at a large scale. Due to the dataset size and distributed sources, we do not host a packaged pretrain dataset in this repo. Please refer to the paper for the data recipe and obtain the open-source corpora accordingly.
 - **Instruction tuning data**: our open-source release is provided as tokenized multimodal instruction data:
   - https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1
 
