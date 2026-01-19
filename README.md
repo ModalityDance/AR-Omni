@@ -284,7 +284,7 @@ Artifacts are saved under:
 
 ### 3. Training <span id="training"></span>
 
-We provide two training stages: pretrain and instruction tuning.
+We provide two training stages: pre-training and instruction tuning.
 
 #### 3.1 Data <span id="training-data"></span>
 
@@ -296,7 +296,7 @@ AR-Omni is trained on **tokenized multimodal sequences**. In both stages, the mu
 
 ---
 
-#### 3.2 Pretrain <span id="training-pretrain"></span>
+#### 3.2 Pretraining <span id="training-pretrain"></span>
 
 ```bash
 cd training/pretrain
