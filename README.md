@@ -271,6 +271,18 @@ Create `infer_test.json`:
   ]
 }
 ```
+```json
+{
+  "dialog_id": "demo_0002",
+  "turns": [
+    {
+      "text": "Can you show me the sunset?",
+      "user_append_text": "Please transcribe the user's vocal input, create a picture of it.",
+      "reset": true
+    }
+  ]
+}
+```
 
 ---
 
