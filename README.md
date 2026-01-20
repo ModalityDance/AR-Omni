@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="24">
   </a>
   <!-- Project Page -->
-  <a href="TBD">
+  <a href="https://modalitydance.github.io/AR-Omni/">
     <img src="https://img.shields.io/badge/Project%20Page-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="Project Page" height="24">
   </a><br>
   <!-- HuggingFace Models -->
