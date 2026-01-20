@@ -18,14 +18,14 @@
     <img src="https://img.shields.io/badge/Project%20Page-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="Project Page" height="24">
   </a><br>
   <!-- HuggingFace Models -->
-  <a href="https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1">
+  <a href="https://huggingface.co/ModalityDance/AR-Omni-Pretrain-v0.1">
     <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Pretrain-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Pretrain" height="24">
   </a>
-  <a href="https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1">
+  <a href="https://huggingface.co/ModalityDance/AR-Omni-Chat-v0.1">
     <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Chat-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Chat" height="24">
   </a>
   <!-- HuggingFace Dataset -->
-  <a href="https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1">
+  <a href="https://huggingface.co/datasets/ModalityDance/AR-Omni-Instruct-v0.1">
     <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Instruct-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Instruct-v0.1" height="24">
   </a>
 
@@ -122,8 +122,8 @@ git clone https://github.com/FunAudioLLM/CosyVoice.git
 ### 2. Inference <span id="inference"></span>
 #### Checkpoints <span id="inference-ckpt"></span>
 
-- **AR-Omni-Pretrain-v0.1**: https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1  
-- **AR-Omni-Chat-v0.1**: https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1
+- **AR-Omni-Pretrain-v0.1**: https://huggingface.co/ModalityDance/AR-Omni-Pretrain-v0.1  
+- **AR-Omni-Chat-v0.1**: https://huggingface.co/ModalityDance/AR-Omni-Chat-v0.1
 
 ---
 
@@ -310,7 +310,7 @@ AR-Omni is trained on **tokenized multimodal sequences**. In both stages, the mu
 
 - **Pretrain data**: built from public corpora at a large scale. Due to the dataset size and distributed sources, we do not host a packaged pretrain dataset in this repo. Please refer to the paper for the data recipe and obtain the open-source corpora accordingly.
 - **Instruction tuning data**: our open-source release is provided as tokenized multimodal instruction data:
-  - https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1
+  - https://huggingface.co/datasets/ModalityDance/AR-Omni-Instruct-v0.1
 
 ---
 
