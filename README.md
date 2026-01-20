@@ -26,7 +26,7 @@
   </a>
   <!-- HuggingFace Dataset -->
   <a href="https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1">
-    <img src="https://img.shields.io/badge/HuggingFace-Dataset-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Instruct-v0.1" height="24">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Instruct-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Instruct-v0.1" height="24">
   </a>
 
   <!-- Optional: overview figure -->
