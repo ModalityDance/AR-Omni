@@ -233,6 +233,12 @@ Release checklist:
       margin: 18px 0 30px;
     }
 
+     .links .flex-break{
+        flex-basis: 100%;
+        width: 0;
+        height: 0;
+      }
+     
     .btn {
       display: inline-flex;
       align-items: center;
@@ -620,13 +626,14 @@ Release checklist:
            arXiv
          </a>
         <a class="btn" href="https://huggingface.co/papers/<ARXIV_ID>" target="_blank" rel="noopener">🤗 HF Papers</a>
-        <a class="btn" href="https://github.com/ModalityDance/AR-Omni" target="_blank" rel="noopener">
-          <span class="icon" aria-hidden="true">
-            <img class="icon-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" alt="GitHub" />
-          </span>
-          GitHub
-        </a>
-        <br />
+         <a class="btn" href="https://github.com/ModalityDance/AR-Omni" target="_blank" rel="noopener">
+           <span class="icon" aria-hidden="true">
+             <img class="icon-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" alt="GitHub" />
+           </span>
+           GitHub
+         </a>
+         
+         <span class="flex-break" aria-hidden="true"></span>
          
         <a class="btn" href="https://huggingface.co/ModalityDance/AR-Omni-Pretrain-v0.1" target="_blank" rel="noopener">🤗
           AR-Omni-Pretrain</a>
