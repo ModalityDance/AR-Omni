@@ -102,14 +102,16 @@ pip install -U pip wheel setuptools
 
 pip install -r requirements.txt
 
-# Install the vendored libs
+# Install the provided libs
 pip install -e ./transformers
 pip install -e ./accelerate
 ```
 
 **CosyVoice.** Please configure the CosyVoice environment (PyTorch/CUDA/audio dependencies, model assets, etc.) by following the official guide:
-
 - https://github.com/FunAudioLLM/CosyVoice
+```bash
+git clone https://github.com/FunAudioLLM/CosyVoice.git
+```
 
 ---
 
@@ -119,41 +121,30 @@ pip install -e ./accelerate
 - **AR-Omni-Pretrain-v0.1**: https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1  
 - **AR-Omni-Chat-v0.1**: https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1
 
-#### AR-Omni-Pretrain
+---
+
+#### AR-Omni-Pretrain <span id="inference-pretrain"></span>
 
 Below are four commands for the four core tasks.  
 
----
-
-##### (1) Text-to-Image (T2I)
-
+##### (1) TTS
 ```bash
 python inference/inference_pretrain.py \
   --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
   --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
-  --out_dir ./outputs/t2i \
+  --out_dir ./outputs/tts \
   --device 0 \
-  t2i \
-  --text "a bunch of ripe strawberries on a plate" \
-  --temp 1.0 \
-  --guidance_scale_image 1.32 \
-  --out_name t2i_test.png
+  tts \
+  --text "Good afternoon! How are you today?" \
+  --instruction "Convert this text into speech." \
+  --wavtokenizer_root /path/to/WavTokenizer \
+  --wavtokenizer_config /path/to/wavtokenizer.yaml \
+  --wavtokenizer_ckpt /path/to/wavtokenizer.ckpt \
+  --max_gen_len 256 \
+  --out_name tts.wav
 ```
 
-##### (2) Image Captioning
-```bash
-python inference/inference_pretrain.py \
-  --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
-  --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
-  --out_dir ./outputs/caption \
-  --device 0 \
-  caption \
-  --image_path inference/demo_test.jpg \
-  --instruction "Describe this image in detail." \
-  --max_gen_len 256
-```
-
-##### (3) ASR
+##### (2) ASR
 ```bash
 python inference/inference_pretrain.py \
   --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
@@ -169,21 +160,32 @@ python inference/inference_pretrain.py \
   --max_seq_len 1024
 ```
 
-##### (4) TTS
+##### (3) Image Captioning
 ```bash
 python inference/inference_pretrain.py \
   --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
   --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
-  --out_dir ./outputs/tts \
+  --out_dir ./outputs/caption \
   --device 0 \
-  tts \
-  --text "Good afternoon! How are you today?" \
-  --instruction "Convert this text into speech." \
-  --wavtokenizer_root /path/to/WavTokenizer \
-  --wavtokenizer_config /path/to/wavtokenizer.yaml \
-  --wavtokenizer_ckpt /path/to/wavtokenizer.ckpt \
-  --max_gen_len 256 \
-  --out_name tts.wav
+  caption \
+  --image_path inference/demo_test.jpg \
+  --instruction "Describe this image in detail." \
+  --max_gen_len 256
+```
+
+##### (4) Text-to-Image (T2I)
+
+```bash
+python inference/inference_pretrain.py \
+  --ckpt_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --tokenizer_path /path/to/AR-Omni-Pretrain-v0.1 \
+  --out_dir ./outputs/t2i \
+  --device 0 \
+  t2i \
+  --text "a bunch of ripe strawberries on a plate" \
+  --temp 1.0 \
+  --guidance_scale_image 1.32 \
+  --out_name t2i_test.png
 ```
 
 ---
