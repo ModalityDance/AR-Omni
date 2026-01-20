@@ -59,7 +59,9 @@ Release checklist:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{Project Title}</title>
+  <title>AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation</title>
+  <meta name="description"
+    content="AR-Omni: a single-decoder, single-token-stream autoregressive any-to-any model for text, images, and speech." />
 
   <style>
     :root {
@@ -102,13 +104,78 @@ Release checklist:
       padding: 0 20px 70px;
     }
 
-    /* ===== Header ===== */
     header {
       text-align: center;
     }
 
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .md-line {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-h1 {
+      margin: 0;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .h1-line1 {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .h1-sub {
+      display: block;
+      margin-top: 6px;
+      font: inherit;
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+    }
+
+    img.logo {
+      width: auto;
+      object-fit: contain;
+      border: none;
+      background: transparent;
+      display: block;
+    }
+
+    img.logo-long {
+      height: 24px;
+      width: auto;
+      max-width: 320px;
+      object-fit: contain;
+      border: none;
+      background: transparent;
+    }
+
+    img.logo-icon {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+      border: none;
+      background: transparent;
+    }
+
     h1 {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: 2.1rem;
       font-weight: 760;
       letter-spacing: -0.02em;
@@ -116,30 +183,48 @@ Release checklist:
 
     .subtitle {
       color: var(--muted);
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
+      margin: 6px 0 10px;
+      font-weight: 600;
     }
 
     .authors,
-    .affils {
+    .affils,
+    .notes {
       color: var(--muted);
-      font-size: 1.2rem;
-      margin: 6px 0;
-      font-weight: 500;
+      font-size: 1.05rem;
+      margin: 8px 0;
+      font-weight: 520;
     }
 
-    .authors a{
-      color:var(--link);              
-      border-bottom:1px dotted var(--link);
+    .authors .name {
+      font-weight: 650;
+      color: var(--fg);
+      white-space: nowrap;
     }
 
-    .authors a:hover{
-      color:var(--link);
-      text-decoration:none;
-      border-bottom-style:solid;      
+    .authors sup {
+      font-size: 0.75em;
+      vertical-align: super;
+      color: var(--muted);
+      margin-left: 1px;
     }
 
-    /* ===== Link buttons ===== */
+    .emails {
+      margin-top: 6px;
+      font-size: 1.0rem;
+      color: var(--muted);
+    }
+
+    .emails a {
+      border-bottom: 1px dotted var(--link);
+    }
+
+    .emails a:hover {
+      text-decoration: none;
+      border-bottom-style: solid;
+    }
+
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -160,7 +245,7 @@ Release checklist:
       font-size: 1rem;
       color: var(--fg);
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
-      transition: transform .05s ease, box-shadow .12s ease;
+      transition: transform .05s ease, box-shadow .12s ease, opacity .12s ease;
     }
 
     .btn:hover {
@@ -169,7 +254,32 @@ Release checklist:
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
     }
 
-    /* ===== Sections ===== */
+    .btn.disabled {
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      fill: currentColor;
+    }
+
+    .icon-img {
+      height: 18px;
+      width: auto;
+      display: block;
+    }
+
     section {
       margin-top: 36px;
     }
@@ -198,8 +308,9 @@ Release checklist:
       margin: 14px 0 0;
     }
 
-    img,
-    video {
+    img:not(.logo):not(.avatar):not(.icon-img),
+    figure > img,
+    figure > video {
       width: 100%;
       border-radius: var(--radius);
       border: 1px solid var(--border);
@@ -225,7 +336,6 @@ Release checklist:
       }
     }
 
-    /* ===== BibTeX ===== */
     .bibtex-wrap {
       position: relative;
     }
@@ -240,34 +350,6 @@ Release checklist:
       color: #e6edf3;
       font-size: 1rem;
       line-height: 1.45;
-    }
-
-    .footnote {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .icon {
-      width: 18px;
-      height: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon svg {
-      width: 18px;
-      height: 18px;
-      display: block;
-      fill: currentColor;
-    }
-
-    .icon-img {
-      height: 18px;
-      width: auto;
-      display: block;
     }
 
     .copy-btn {
@@ -285,113 +367,540 @@ Release checklist:
     .copy-btn:hover {
       background: #f0f3f6;
     }
+
+    .footnote {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .demo-title {
+      margin: 0 0 10px;
+      font-weight: 750;
+    }
+
+    .demo-meta {
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .chat {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .turn {
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .turn:first-child {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .turn-head {
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 650;
+      margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .msg.user {
+      flex-direction: row-reverse;
+    }
+
+    img.avatar{
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      flex: 0 0 auto;
+      display: block;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    img.avatar.user{ background: #f7faff; }
+    img.avatar.bot{ background: #ffffff; }
+
+    .bubble {
+      width: min(720px, 70%);
+      min-width: min(520px, 50%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+
+    .msg.user .bubble {
+      background: #f7faff;
+    }
+
+    @media (max-width: 640px) {
+      .bubble {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
+    .bubble p {
+      margin: 0.35em 0;
+    }
+
+    .bubble img {
+      width: min(520px, 50%);
+      display: block;
+      margin: 8px auto 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .bubble audio {
+      width: 100%;
+      margin-top: 8px;
+      display: block;
+    }
+
+    details.more {
+      margin-top: 10px;
+    }
+
+    details.more summary {
+      cursor: pointer;
+      color: var(--link);
+      font-weight: 650;
+    }
+
+    details.more summary:hover {
+      text-decoration: underline;
+    }
+
+    .ack-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    .ack-badges a {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .ack-badges img {
+      width: auto;
+      height: 22px;
+      border: 0;
+      background: transparent;
+      border-radius: 6px;
+      display: block;
+    }
+
+    @media (min-width: 641px) {
+      .bubble:has(img) {
+        width: min(520px, 38%);
+        min-width: min(420px, 32%);
+      }
+    }
+
+    .bubble:has(img) img {
+      width: min(420px, 100%);
+      margin: 8px auto 0;
+    }
   </style>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("copy-btn");
       const pre = document.getElementById("bibtex");
-
-      if (!btn || !pre) { return; }
+      if (!btn || !pre) return;
 
       btn.addEventListener("click", async () => {
         try {
           await navigator.clipboard.writeText(pre.innerText);
           btn.textContent = "Copied";
-          btn.classList.add("copied");
-          setTimeout(() => {
-            btn.textContent = "Copy";
-            btn.classList.remove("copied");
-          }, 1000);
-        } catch (e) {
-        }
+          setTimeout(() => (btn.textContent = "Copy"), 1000);
+        } catch (e) { }
       });
     });
   </script>
-
 </head>
 
 <body>
   <div class="container">
 
     <header>
-      <h1>🪐 {Project Title}</h1>
-      <div class="subtitle"><strong>{Short tagline or one-sentence summary}</strong></div>
+      <div class="hero-title">
+        <div class="md-line">
+          <img class="logo logo-long" src="../assets/LOGOwithNameLong.svg" alt="MD logo">
+        </div>
+
+        <div class="title-row">
+          <h1 class="hero-h1">
+            <span class="h1-line1">
+              <img class="logo logo-icon" src="../assets/ar-omni-logo.png" alt="AR-Omni logo">
+              <span>AR-Omni:</span>
+            </span>
+            <span class="h1-sub">A Unified Autoregressive Model for Any-to-Any Generation</span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="subtitle">
+        <strong>One decoder, One token stream — unified AR generation for text, images, and speech.</strong>
+      </div>
 
       <div class="authors">
-        <a href="{author1_homepage}" target="_blank" rel="noopener">{Author 1}</a><sup>{1}</sup>,
-        <a href="{author2_homepage}" target="_blank" rel="noopener">{Author 2}</a><sup>{2}</sup>,
-        <a href="{author3_homepage}" target="_blank" rel="noopener">{Author 3}</a><sup>{1}</sup>
+        <span class="name">Dongjie Cheng</span><sup>1*</sup>,
+        <span class="name">Ruifeng Yuan</span><sup>1*</sup>,
+        <span class="name">Yongqi Li</span><sup>1†</sup>,
+        <span class="name">Runyang You</span><sup>1</sup><br>
+        <span class="name">Wenjie Wang</span><sup>2</sup>,
+        <span class="name">Liqiang Nie</span><sup>3</sup>,
+        <span class="name">Lei Zhang</span><sup>1</sup>,
+        <span class="name">Wenjie Li</span><sup>1</sup>
       </div>
 
       <div class="affils">
-        <sup>1</sup>{Affiliation 1}, <sup>2</sup>{Affiliation 2}
+        <sup>1</sup>Hong Kong Polytechnic University ·
+        <sup>2</sup>University of Science and Technology of China ·
+        <sup>3</sup>Harbin Institute of Technology (Shenzhen)
+      </div>
+
+      <div class="notes">
+        <span><sup>*</sup>Equal contribution</span> ·
+        <span><sup>†</sup>Corresponding author</span>
+      </div>
+
+      <div class="emails">
+        <a href="mailto:dong-jie.cheng@connect.polyu.hk">dong-jie.cheng@connect.polyu.hk</a>,
+        <a href="mailto:liyongqi0@gmail.com">liyongqi0@gmail.com</a>
       </div>
 
       <div class="links">
-        <a class="btn" href="{paper_link}" target="_blank" rel="noopener">📄 Paper</a>
-        <a class="btn" href="{github_repo_link}">
+        <a class="btn disabled" href="#" aria-disabled="true">📄 Paper</a>
+
+        <a class="btn" href="https://github.com/ModalityDance/AR-Omni" target="_blank" rel="noopener">
           <span class="icon" aria-hidden="true">
             <img class="icon-img" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" alt="GitHub" />
           </span>
           GitHub
         </a>
-        <a class="btn" href="{hf_link}">🤗 HuggingFace</a>
-        <a class="btn" href="{demo_link}">🧪 Demo</a>
-        <a class="btn" href="{video_link}">🎥 Video</a>
+
+        <a class="btn" href="https://huggingface.co/ModalityDance/AR-Omni-Pretrain-v0.1" target="_blank" rel="noopener">🤗
+          AR-Omni-Pretrain</a>
+        <a class="btn" href="https://huggingface.co/ModalityDance/AR-Omni-Chat-v0.1" target="_blank" rel="noopener">🤗
+          AR-Omni-Chat</a>
+        <a class="btn" href="https://huggingface.co/datasets/ModalityDance/AR-Omni-Instruct-v0.1" target="_blank"
+          rel="noopener">🗂️ Dataset</a>
       </div>
     </header>
 
     <section>
       <h2>✨ TL;DR</h2>
       <div class="card tldr">
-        1–2 sentences summarizing the core idea and main results. You can also use figures here.
-      </div>
-    </section>
-
-    <section>
-      <h2>🧪 Demo (Optional)</h2>
-      <div class="card">
-        <p>{Short description of the demo. Videos, figures or interactive elements can be included here.}</p>
-        <!-- video or gif -->
-        <figure>
-          <video controls playsinline>
-            <source src="./assets/{demo.mp4}" type="video/mp4">
-          </video>
-          <figcaption>Demo of the system.</figcaption>
-        </figure>
+        AR-Omni is a <b>single-decoder</b>, <b>single-token-stream</b> autoregressive any-to-any model.
+        It unifies multimodal generation as standard next-token prediction over interleaved sequences, and improves
+        training/inference behavior with task-aware loss reweighting, token-level perceptual alignment for
+        image tokens, and a finite-state decoding machine.
       </div>
     </section>
 
     <section>
       <h2>📘 Abstract</h2>
       <div class="card">
-        Your abstract goes here.
+        Real-world perception and interaction are inherently multimodal, encompassing not only language but also vision
+        and speech, which motivates the development of “Omni” MLLMs that support both multimodal inputs and multimodal
+        outputs.
+        While a sequence of omni MLLMs has emerged, most existing systems still rely on additional expert components to
+        achieve multimodal generation, limiting the simplicity of unified training and inference.
+        Autoregressive (AR) modeling, with a single token stream, a single next-token objective, and a single decoder,
+        is an elegant and scalable foundation in the text domain.
+        Motivated by this, we present AR-Omni, a unified any-to-any model in the autoregressive paradigm without any
+        expert decoders.
+        AR-Omni supports autoregressive text and image generation, as well as streaming speech generation, all under a
+        single Transformer decoder.
+        We further address three practical issues in unified AR modeling: modality imbalance via task-aware loss
+        reweighting, visual fidelity via a lightweight token-level perceptual alignment loss for image tokens, and
+        stability–creativity trade-offs via a finite-state decoding mechanism.
+        Empirically, AR-Omni achieves strong quality across three modalities while remaining real-time, achieving a 0.88
+        real-time factor for speech generation.
       </div>
     </section>
 
     <section>
-      <h2>🧠 Method</h2>
+      <h2>🧠 Architecture</h2>
       <div class="card">
-        <p>{Brief explanation of the method and pipeline.}</p>
         <figure>
-          <img src="./assets/{pipeline.png}" alt="Method pipeline">
-          <figcaption>Method pipeline.</figcaption>
+          <img src="../assets/overview.png" alt="AR-Omni overview">
+          <figcaption>Overview of AR-Omni.</figcaption>
         </figure>
       </div>
     </section>
 
     <section>
-      <h2>📊 Results</h2>
-      <div class="card grid2">
-        <figure>
-          <img src="./assets/{result1.png}">
-          <figcaption>Result 1.</figcaption>
-        </figure>
-        <figure>
-          <img src="./assets/{result2.png}">
-          <figcaption>Result 2.</figcaption>
-        </figure>
+      <h2>🧩 Demonstrations</h2>
+
+      <div class="demo-grid">
+
+        <div class="card">
+          <p class="demo-title">• Example 1: Speech to Image</p>
+          <div class="chat">
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example1/user-show-a-cat.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <img src="../assets/Example1/model-cat.png" alt="Speech to Image result">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="demo-title">• Example 2: Image to Speech</p>
+          <div class="chat">
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example2/user-desc.wav" type="audio/wav">
+                  </audio>
+
+                  <p style="margin-top:10px;"><b>Input image:</b></p>
+                  <img src="../assets/Example2/user-desc-image.jpg" alt="Input image">
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example2/model-desc.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="demo-title">• Example 3: Multi-Turn Interleaved Conversation</p>
+
+          <div class="chat">
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example3/user-plan-trip.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example3/model-plan.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example3/user-gen-forest.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <img src="../assets/Example3/model-gen-forest.png" alt="Generated forest image">
+                </div>
+              </div>
+            </div>
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example3/user-desc-gen-image.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example3/model-desc-gen-image.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="demo-title">• Example 4: Multi-Turn Speech Conversation</p>
+
+          <div class="chat">
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/user-pick-easy-book.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/model-pick-easy.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/user-book-suggest.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/model-suggest.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/user-reading-time.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/model-reading-time.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+            <div class="turn">
+              <div class="msg user">
+                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <div class="bubble audio-only">
+                  <p><b>User:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/user-lose-interest.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+
+              <div class="msg bot">
+                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <div class="bubble audio-only">
+                  <p><b>AR-Omni-Chat:</b></p>
+                  <audio controls playsinline preload="none">
+                    <source src="../assets/Example4/model-lose-interest.wav" type="audio/wav">
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -400,33 +909,75 @@ Release checklist:
       <div class="card bibtex-wrap">
         <button class="copy-btn" id="copy-btn">Copy</button>
         Please consider citing our work if you find it useful:
-        <pre id="bibtex">
-@misc{yourproject2025,
-  title   = {{Project Title}},
-  author  = {{Author 1} and {Author 2} and {Author 3}},
-  year    = {2025},
-  eprint  = {xxxx.xxxxx},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CL}
-}
-    </pre>
+        <pre id="bibtex">@misc{aromni2026,
+  title        = {AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation},
+  author       = {Dongjie Cheng and Ruifeng Yuan and Yongqi Li and Runyang You and Wenjie Wang and Liqiang Nie and Lei Zhang and Wenjie Li},
+  year         = {2026},
+  note         = {arXiv: TBD},
+  archivePrefix= {arXiv},
+  primaryClass = {cs.AI}
+}</pre>
       </div>
     </section>
 
-
     <section>
       <h2>🙏 Acknowledgements</h2>
+
       <div class="card">
         <p>
-          Acknowledge related projects, datasets, funding, collaborators.<br>
-          License your code appropriately.
+          We thank the open-source projects and research community that made this work possible.
+        </p>
+
+        <div class="ack-badges" aria-label="Acknowledgement badges">
+          <a href="https://github.com/facebookresearch/chameleon" target="_blank" rel="noopener">
+            <img alt="Model: Chameleon (Chameleon Team)"
+              src="https://img.shields.io/badge/Model%26Code-Chameleon%20Team-blue?style=flat&logo=github">
+          </a>
+          <a href="https://github.com/GAIR-NLP/anole" target="_blank" rel="noopener">
+            <img alt="Model: Anole" src="https://img.shields.io/badge/Model-Anole-blue?style=flat&logo=github">
+          </a>
+
+          <a href="https://github.com/GAIR-NLP/thinking-with-generated-images" target="_blank" rel="noopener">
+            <img alt="Code: thinking-with-generated-images"
+              src="https://img.shields.io/badge/Code-thinking--with--generated--images-blue?style=flat&logo=github">
+          </a>
+
+          <a href="https://iclr-blogposts.github.io/2025/blog/fine-tuning-token-based-large-multimodal-models/"
+            target="_blank" rel="noopener">
+            <img alt="Training Experience: ICLR Blog"
+              src="https://img.shields.io/badge/Training%20Experience-ICLR%20Blog-blue?style=flat&logo=gitbook">
+          </a>
+
+          <a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">
+            <img alt="Fine-tuning: Transformers"
+              src="https://img.shields.io/badge/Fine--tuning-Transformers-blue?style=flat&logo=github">
+          </a>
+
+          <a href="https://github.com/OpenMOSS/AnyGPT" target="_blank" rel="noopener">
+            <img alt="Training Experience: AnyGPT"
+              src="https://img.shields.io/badge/Training%20Experience-AnyGPT-blue?style=flat&logo=github">
+          </a>
+
+          <a href="https://huggingface.co/datasets/OpenMOSS-Team/AnyInstruct" target="_blank" rel="noopener">
+            <img alt="Data: AnyInstruct"
+              src="https://img.shields.io/badge/Data-AnyInstruct-blue?style=flat&logo=huggingface">
+          </a>
+
+          <a href="https://huggingface.co/datasets/gpt-omni/VoiceAssistant-400K" target="_blank" rel="noopener">
+            <img alt="Data: Mini-Omni" src="https://img.shields.io/badge/Data-Mini--Omni-blue?style=flat&logo=huggingface">
+          </a>
+        </div>
+
+        <p style="margin-top: 14px; color: var(--muted);">
+          This project is licensed under the <b>MIT License</b>. It also complies with the licenses of referenced
+          third-party projects and dependencies, including the <b>Chameleon Research License</b>.
         </p>
       </div>
     </section>
 
     <div class="footnote">
-      🪐 {Project Title} · ModalityDance Lab<br>
-      Maintained by <a href="{your_homepage}" target="_blank" rel="noopener">{Your Name}</a>. Updated on {Date}.
+      🪐 AR-Omni · ModalityDance Lab<br>
+      Maintained by <span>Dongjie Cheng</span>. Updated on 2026-01-20.
     </div>
 
   </div>

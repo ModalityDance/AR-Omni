@@ -7,22 +7,26 @@
 <div align="center">
   <!-- Paper Link -->
   <a href="TBD">
-    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper" height="20">
+    <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper" height="24">
   </a>
   <!-- HuggingFace Papers -->
   <a href="TBD">
-    <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="20">
+    <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="24">
   </a>
+  <!-- Project Page -->
+  <a href="TBD">
+    <img src="https://img.shields.io/badge/Project%20Page-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="Project Page" height="24">
+  </a><br>
   <!-- HuggingFace Models -->
   <a href="https://huggingface.co/charlesdj/AR-Omni-Pretrain-v0.1">
-    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Pretrain-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Pretrain" height="20">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Pretrain-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Pretrain" height="24">
   </a>
   <a href="https://huggingface.co/charlesdj/AR-Omni-Chat-v0.1">
-    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Chat-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Chat" height="20">
+    <img src="https://img.shields.io/badge/HuggingFace-AR--Omni--Chat-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Chat" height="24">
   </a>
   <!-- HuggingFace Dataset -->
   <a href="https://huggingface.co/datasets/charlesdj/AR-Omni-Instruct-v0.1">
-    <img src="https://img.shields.io/badge/Dataset-AR--Omni--Instruct-4c1?style=for-the-badge" alt="AR-Omni-Instruct-v0.1" height="20">
+    <img src="https://img.shields.io/badge/HuggingFace-Dataset-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="AR-Omni-Instruct-v0.1" height="24">
   </a>
 
   <!-- Optional: overview figure -->
