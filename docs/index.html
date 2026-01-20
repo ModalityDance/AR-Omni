@@ -567,13 +567,13 @@ Release checklist:
     <header>
       <div class="hero-title">
         <div class="md-line">
-          <img class="logo logo-long" src="../assets/LOGOwithNameLong.svg" alt="MD logo">
+          <img class="logo logo-long" src="./assets/LOGOwithNameLong.svg" alt="MD logo">
         </div>
 
         <div class="title-row">
           <h1 class="hero-h1">
             <span class="h1-line1">
-              <img class="logo logo-icon" src="../assets/ar-omni-logo.png" alt="AR-Omni logo">
+              <img class="logo logo-icon" src="./assets/ar-omni-logo.png" alt="AR-Omni logo">
               <span>AR-Omni:</span>
             </span>
             <span class="h1-sub">A Unified Autoregressive Model for Any-to-Any Generation</span>
@@ -597,7 +597,7 @@ Release checklist:
       </div>
 
       <div class="affils">
-        <sup>1</sup>Hong Kong Polytechnic University ·
+        <sup>1</sup>The Hong Kong Polytechnic University <br />
         <sup>2</sup>University of Science and Technology of China ·
         <sup>3</sup>Harbin Institute of Technology (Shenzhen)
       </div>
@@ -608,7 +608,7 @@ Release checklist:
       </div>
 
       <div class="emails">
-        <a href="mailto:dong-jie.cheng@connect.polyu.hk">dong-jie.cheng@connect.polyu.hk</a>,
+        <a href="mailto:{dongjie.cheng,ruifeng.yuan}@connect.polyu.hk">{dongjie.cheng,ruifeng.yuan}@connect.polyu.hk</a>
         <a href="mailto:liyongqi0@gmail.com">liyongqi0@gmail.com</a>
       </div>
 
@@ -657,7 +657,7 @@ Release checklist:
         single Transformer decoder.
         We further address three practical issues in unified AR modeling: modality imbalance via task-aware loss
         reweighting, visual fidelity via a lightweight token-level perceptual alignment loss for image tokens, and
-        stability–creativity trade-offs via a finite-state decoding mechanism.
+        stability-creativity trade-offs via a finite-state decoding mechanism.
         Empirically, AR-Omni achieves strong quality across three modalities while remaining real-time, achieving a 0.88
         real-time factor for speech generation.
       </div>
@@ -667,7 +667,7 @@ Release checklist:
       <h2>🧠 Architecture</h2>
       <div class="card">
         <figure>
-          <img src="../assets/overview.png" alt="AR-Omni overview">
+          <img src="./assets/overview.png" alt="AR-Omni overview">
           <figcaption>Overview of AR-Omni.</figcaption>
         </figure>
       </div>
@@ -683,20 +683,20 @@ Release checklist:
           <div class="chat">
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example1/user-show-a-cat.wav" type="audio/wav">
+                    <source src="./assets/Example1/user-show-a-cat.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble">
                   <p><b>AR-Omni-Chat:</b></p>
-                  <img src="../assets/Example1/model-cat.png" alt="Speech to Image result">
+                  <img src="./assets/Example1/model-cat.png" alt="Speech to Image result">
                 </div>
               </div>
             </div>
@@ -708,24 +708,24 @@ Release checklist:
           <div class="chat">
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example2/user-desc.wav" type="audio/wav">
+                    <source src="./assets/Example2/user-desc.wav" type="audio/wav">
                   </audio>
 
                   <p style="margin-top:10px;"><b>Input image:</b></p>
-                  <img src="../assets/Example2/user-desc-image.jpg" alt="Input image">
+                  <img src="./assets/Example2/user-desc-image.jpg" alt="Input image">
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example2/model-desc.wav" type="audio/wav">
+                    <source src="./assets/Example2/model-desc.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
@@ -740,21 +740,21 @@ Release checklist:
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example3/user-plan-trip.wav" type="audio/wav">
+                    <source src="./assets/Example3/user-plan-trip.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example3/model-plan.wav" type="audio/wav">
+                    <source src="./assets/Example3/model-plan.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
@@ -762,41 +762,41 @@ Release checklist:
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example3/user-gen-forest.wav" type="audio/wav">
+                    <source src="./assets/Example3/user-gen-forest.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble">
                   <p><b>AR-Omni-Chat:</b></p>
-                  <img src="../assets/Example3/model-gen-forest.png" alt="Generated forest image">
+                  <img src="./assets/Example3/model-gen-forest.png" alt="Generated forest image">
                 </div>
               </div>
             </div>
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example3/user-desc-gen-image.wav" type="audio/wav">
+                    <source src="./assets/Example3/user-desc-gen-image.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example3/model-desc-gen-image.wav" type="audio/wav">
+                    <source src="./assets/Example3/model-desc-gen-image.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
@@ -812,21 +812,21 @@ Release checklist:
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/user-pick-easy-book.wav" type="audio/wav">
+                    <source src="./assets/Example4/user-pick-easy-book.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/model-pick-easy.wav" type="audio/wav">
+                    <source src="./assets/Example4/model-pick-easy.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
@@ -834,21 +834,21 @@ Release checklist:
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/user-book-suggest.wav" type="audio/wav">
+                    <source src="./assets/Example4/user-book-suggest.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/model-suggest.wav" type="audio/wav">
+                    <source src="./assets/Example4/model-suggest.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
@@ -856,21 +856,21 @@ Release checklist:
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/user-reading-time.wav" type="audio/wav">
+                    <source src="./assets/Example4/user-reading-time.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/model-reading-time.wav" type="audio/wav">
+                    <source src="./assets/Example4/model-reading-time.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
@@ -878,21 +878,21 @@ Release checklist:
 
             <div class="turn">
               <div class="msg user">
-                <img class="avatar user" src="../assets/user.svg" alt="User">
+                <img class="avatar user" src="./assets/user.svg" alt="User">
                 <div class="bubble audio-only">
                   <p><b>User:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/user-lose-interest.wav" type="audio/wav">
+                    <source src="./assets/Example4/user-lose-interest.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
 
               <div class="msg bot">
-                <img class="avatar bot" src="../assets/model.svg" alt="AR-Omni-Chat">
+                <img class="avatar bot" src="./assets/model.svg" alt="AR-Omni-Chat">
                 <div class="bubble audio-only">
                   <p><b>AR-Omni-Chat:</b></p>
                   <audio controls playsinline preload="none">
-                    <source src="../assets/Example4/model-lose-interest.wav" type="audio/wav">
+                    <source src="./assets/Example4/model-lose-interest.wav" type="audio/wav">
                   </audio>
                 </div>
               </div>
