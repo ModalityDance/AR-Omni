@@ -69,7 +69,7 @@ Efficient real-time speech synthesis (as measured by the TTS task).
 - [x] AR-Omni-Chat checkpoint 
 - [x] Instruction-tuning dataset  
 - [x] Training code and recipes
-- [ ] Paper link  
+- [x] Paper link  
 - [ ] Streaming inference
 - [ ] Public demo / gradio / space
 
