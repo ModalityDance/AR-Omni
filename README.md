@@ -110,6 +110,10 @@ pip install -r requirements.txt
 pip install -e ./transformers
 pip install -e ./accelerate
 ```
+**WavTokenizer.** This project requires the WavTokenizer: the checkpoint and the YAML config.
+- https://huggingface.co/novateur/WavTokenizer/resolve/main/WavTokenizer_small_600_24k_4096.ckpt
+- https://huggingface.co/novateur/WavTokenizer/resolve/main/wavtokenizer_smalldata_frame40_3s_nq1_code4096_dim512_kmeans200_attn.yaml
+
 
 **CosyVoice.** Please configure the CosyVoice environment (PyTorch/CUDA/audio dependencies, model assets, etc.) by following the official guide:
 - https://github.com/FunAudioLLM/CosyVoice
