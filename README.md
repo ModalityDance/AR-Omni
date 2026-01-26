@@ -225,7 +225,7 @@ python3 inference/inference_chat.py \
   --cosyvoice_model_dir /path/to/CosyVoice2-0.5B \
   --wavtokenizer_cfg_path /path/to/wavtokenizer.yaml \
   --wavtokenizer_ckpt_path /path/to/wavtokenizer.ckpt \
-  --save_speech --save_images
+  ---save_audio --save_images
 ```
 
 Common optional flags:
