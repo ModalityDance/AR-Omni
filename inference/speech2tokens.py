@@ -184,7 +184,7 @@ class Text2TokenConverter:
         tok_shift: int = 8724,
         sample_rate: int = 24000,
         fp16_tts: bool = False,
-        default_speaker_wav: Optional[Union[str, Path]] = "./ref.wav",
+        default_speaker_wav: Optional[Union[str, Path]] = "./inference/ref.wav",
     ) -> None:
         _add_to_syspath(wavtokenizer_root)
 
