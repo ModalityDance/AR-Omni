@@ -815,16 +815,6 @@ class BatchRunner:
                 )
                 all_meta.append(meta)
                 print(f"[OK] {did} turn#{meta['turn_index']} -> {meta['decoded_text_file']}")
-                # except Exception as e:
-                #     err = {
-                #         "dialog_id": did,
-                #         "turn_index": idx,
-                #         "text": td.get("text"),
-                #         "wav_path": td.get("wav_path") or td.get("audio_path"),
-                #         "error": repr(e),
-                #     }
-                #     all_meta.append(err)
-                #     print(f"[ERR] {did} turn#{idx}: {repr(e)}")
 
         log_path = self.output_dir / "batch_log.json"
         log_path.write_text(json.dumps(all_meta, ensure_ascii=False, indent=2), encoding="utf-8")
