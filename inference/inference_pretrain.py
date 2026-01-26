@@ -1,14 +1,10 @@
 # infer_all.py
 """
-Single-input inference for 4 tasks (no batching / no parallelism):
+Single-input inference for 4 tasks:
   - t2i:  one text prompt -> one image
   - caption: one image -> one caption
   - asr:  one audio path -> one transcript
   - tts:  one text prompt -> one wav
-
-Change note:
-- Removed the literal "<reserved12826>" from T2I prompts.
-- We now insert the real boundary token explicitly: <eoh> (id=12830).
 """
 
 import json
@@ -28,7 +24,7 @@ SPECIAL = {
     "<boa>": 12821,  # begin-of-audio
     "<eoa>": 12820,  # end-of-audio
     "<eoh>": 12830,  # end-of-human turn
-}
+}   
 EXTRA_EOS = 12831
 
 # ---- Audio token protocol (for ASR input / TTS output post-processing) ----
@@ -179,22 +175,64 @@ def load_image_tokens_from_args(args) -> List[int]:
         img = Image.open(args.image_path).convert("RGB")
         model = args._model  # injected in main()
 
-        for fn_name in ("encode_image", "tokenize_image", "image_to_tokens"):
-            if hasattr(model, fn_name):
-                out = getattr(model, fn_name)(img)
-                if hasattr(out, "tolist"):
-                    out = out.tolist()
-                if not isinstance(out, list):
-                    raise RuntimeError(f"{fn_name} returned unsupported type: {type(out)}")
-                return [int(x) for x in out]
+        tm = getattr(model, "token_manager", None)
+        if tm is not None and hasattr(tm, "tokenize_image"):
+            out = tm.tokenize_image(img)
+            if hasattr(out, "tolist"):
+                out = out.tolist()
+            if not isinstance(out, list):
+                raise RuntimeError(
+                    f"token_manager.tokenize_image returned unsupported type: {type(out)}"
+                )
+            return [int(x) for x in out]
 
         raise RuntimeError(
-            "AROmniInferenceModel does not expose an image encoder method "
-            "(encode_image/tokenize_image/image_to_tokens). "
+            "Model does not expose image tokenization via model.token_manager.tokenize_image. "
             "Please provide --image_tokens_json instead."
         )
 
     raise ValueError("caption requires either --image_path or --image_tokens_json.")
+
+def _flatten_codes_to_1d(codes) -> List[int]:
+    """
+    Flatten codes to 1D in the common order:
+      codes: [B, NQ, T]  -> iterate by time frame, then codebook (T-major interleave)
+    Accepts torch.Tensor or nested python lists.
+    """
+    if torch.is_tensor(codes):
+        c = codes
+        if c.dim() == 3:
+            c = c[0]  # [NQ, T]
+        if c.dim() == 2:
+            # [NQ, T] -> [T, NQ] -> 1D
+            c = c.transpose(0, 1).reshape(-1)
+        else:
+            c = c.reshape(-1)
+        return [int(x) for x in c.detach().cpu().tolist()]
+
+    # nested lists fallback
+    while isinstance(codes, list) and len(codes) > 0 and isinstance(codes[0], list):
+        # keep peeling the outermost batch dim if present
+        if len(codes) == 1:
+            codes = codes[0]
+        else:
+            break
+
+    # codes could now be [NQ][T] or [T][NQ] or already 1D; best-effort flatten
+    if isinstance(codes, list) and len(codes) > 0 and isinstance(codes[0], list):
+        # assume [NQ][T] -> interleave by T
+        nq = len(codes)
+        t = len(codes[0])
+        out = []
+        for ti in range(t):
+            for qi in range(nq):
+                out.append(int(codes[qi][ti]))
+        return out
+
+    if isinstance(codes, list):
+        return [int(x) for x in codes]
+
+    raise RuntimeError(f"Unexpected codes type: {type(codes)}")
 
 def load_asr_model_audio_tokens(args, device: torch.device) -> List[int]:
     """
@@ -250,34 +288,23 @@ def load_asr_model_audio_tokens(args, device: torch.device) -> List[int]:
     if sr != TTS_SAMPLE_RATE:
         wav = torchaudio.functional.resample(wav, sr, TTS_SAMPLE_RATE)
 
-    codes = None
-    if hasattr(wavtokenizer, "encode"):
-        try:
-            codes = wavtokenizer.encode(wav.to(device))
-        except TypeError:
-            codes = wavtokenizer.encode(wav.to(device), sample_rate=TTS_SAMPLE_RATE)
-    elif hasattr(wavtokenizer, "wav_to_codes"):
-        codes = wavtokenizer.wav_to_codes(wav.to(device))
-    else:
+    if not hasattr(wavtokenizer, "encode_infer"):
         raise RuntimeError(
-            "WavTokenizer has no supported encode API (encode / wav_to_codes). "
+            "WavTokenizer has no encode_infer API. "
             "Please provide --audio_tokens_json / --audio_codes_json."
         )
 
-    if hasattr(codes, "detach"):
-        codes = codes.detach()
-    if hasattr(codes, "cpu"):
-        codes = codes.cpu()
-    if hasattr(codes, "tolist"):
-        codes = codes.tolist()
+    with torch.inference_mode():
+        ret = wavtokenizer.encode_infer(
+            wav.to(device),
+            bandwidth_id=torch.tensor([0], device=device),
+        )
 
-    while isinstance(codes, list) and len(codes) > 0 and isinstance(codes[0], list):
-        codes = codes[0]
-    if not isinstance(codes, list):
-        raise RuntimeError(f"Unexpected WavTokenizer codes type: {type(codes)}")
+    # encode_infer usually returns (features, codes)
+    codes = ret[1] if isinstance(ret, (tuple, list)) and len(ret) >= 2 else ret
 
-    return [int(x) + AUDIO_OFFSET for x in codes]
-
+    flat = _flatten_codes_to_1d(codes)
+    return [int(x) + AUDIO_OFFSET for x in flat]
 
 # =========================
 # TTS helpers
@@ -420,7 +447,6 @@ def run_tts(args, device: torch.device):
     })
     print(str(out_wav))
 
-
 # =========================
 # CLI
 # =========================
@@ -453,15 +479,15 @@ def build_parser():
     asr.add_argument("--audio_path", type=str, default="", help="optional: raw audio path (requires WavTokenizer+torchaudio)")
     asr.add_argument("--audio_tokens_json", type=str, default="", help="optional: JSON list[int] model audio tokens")
     asr.add_argument("--audio_codes_json", type=str, default="", help="optional: JSON list[int] wavtokenizer codes (0-based)")
-    asr.add_argument("--wavtokenizer_root", type=str, default="", help="optional: path to WavTokenizer repo root")
+    asr.add_argument("--wavtokenizer_root", type=str, default="./inference", help="optional: path to WavTokenizer repo root")
     asr.add_argument("--wavtokenizer_config", type=str, default="")
     asr.add_argument("--wavtokenizer_ckpt", type=str, default="")
 
     tts = sp.add_parser("tts", help="one prompt -> one wav")
     tts.add_argument("--text", type=str, required=True)
     tts.add_argument("--instruction", type=str, default=DEFAULT_TTS_INSTR)
-    tts.add_argument("--max_gen_len", type=int, default=256)
-    tts.add_argument("--wavtokenizer_root", type=str, default="", help="optional: path to WavTokenizer repo root")
+    tts.add_argument("--max_gen_len", type=int, default=1024)
+    tts.add_argument("--wavtokenizer_root", type=str, default="./inference", help="optional: path to WavTokenizer repo root")
     tts.add_argument("--wavtokenizer_config", type=str, required=True)
     tts.add_argument("--wavtokenizer_ckpt", type=str, required=True)
     tts.add_argument("--out_name", type=str, default="", help="output filename (default: result.wav)")
