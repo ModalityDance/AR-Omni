@@ -148,7 +148,7 @@ python inference/inference_pretrain.py \
   --wavtokenizer_root /path/to/WavTokenizer \
   --wavtokenizer_config /path/to/wavtokenizer.yaml \
   --wavtokenizer_ckpt /path/to/wavtokenizer.ckpt \
-  --max_gen_len 256 \
+  --max_gen_len 1024 \
   --out_name tts.wav
 ```
 
@@ -160,12 +160,12 @@ python inference/inference_pretrain.py \
   --out_dir ./outputs/asr \
   --device 0 \
   asr \
-  --speech_path inference/ref.wav \
+  --audio_path inference/ref.wav \
   --wavtokenizer_root /path/to/WavTokenizer \
   --wavtokenizer_config /path/to/wavtokenizer.yaml \
   --wavtokenizer_ckpt /path/to/wavtokenizer.ckpt \
   --instruction "Can you please convert this speech into written text?" \
-  --max_seq_len 1024
+  --max_seq_len 256
 ```
 
 ##### (3) Image Captioning
