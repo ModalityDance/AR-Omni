@@ -265,6 +265,7 @@ Create `infer_test.json`:
 ```json
 {
   "dialog_id": "demo_0001",
+  "speaker_wav": "./inference/ref.wav",
   "turns": [
     {
       "text": "Describe the image in detail.",
@@ -278,6 +279,7 @@ Create `infer_test.json`:
 ```json
 {
   "dialog_id": "demo_0002",
+  "speaker_wav": "./inference/ref.wav",
   "turns": [
     {
       "text": "Can you show me the sunset?",
