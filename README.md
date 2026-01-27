@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/Paper-arXiv-b31b1b?style=for-the-badge&logo=arxiv" alt="Paper" height="24">
   </a>
   <!-- HuggingFace Papers -->
-  <a href="TBD">
+  <a href="https://huggingface.co/papers/2601.17761">
     <img src="https://img.shields.io/badge/HuggingFace-Papers-fcc21b?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Papers"  height="24">
   </a>
   <!-- Project Page -->
