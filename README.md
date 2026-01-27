@@ -229,7 +229,6 @@ python3 inference/inference_chat.py \
 ```
 
 Common optional flags:
-- `--greedy` : greedy decode for text
 - `--txt_temp`, `--txt_top_p` : sampling settings for text
 - `--img_temp` : sampling temp for image tokens
 - `--bandwidth_id` : wavtokenizer bandwidth id
