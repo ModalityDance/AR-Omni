@@ -330,7 +330,7 @@ deepspeed --num_gpus 8 pretrain.py \
   --dataset_dir /path/to/pretrain_jsonl_shards \
   --deepspeed_config ds_config.json \
   --learning_rate 1e-5 \
-  --gradient_accumulation_steps 1 \
+  --gradient_accumulation_steps 16 \
   --response_weighted_tasks "image_caption,speech_to_text" \
   --response_seg_weight 2.0 \
   --perception_weight 1.0
@@ -353,7 +353,7 @@ deepspeed --num_gpus 8 sft.py \
   --output_path /path/to/output_sft_ckpt \
   --deepspeed_config /path/to/ds_config.json \
   --learning_rate 1e-5 \
-  --gradient_accumulation_steps 1 \
+  --gradient_accumulation_steps 8 \
   --sl_project YOUR_PROJECT \
   --sl_experiment YOUR_EXPERIMENT \
   --max_length 2048 \
