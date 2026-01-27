@@ -445,11 +445,14 @@ This project is licensed under the **MIT License**. It also complies with the li
 If you use **AR-Omni** in your research or applications, please consider citing:
 
 ```bibtex
-@misc{aromni2026,
-  title        = {AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation},
-  author       = {TBD},
-  year         = {2026},
-  note         = {TBD: arXiv/URL}
+@misc{cheng2026aromniunifiedautoregressivemodel,
+      title={AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation}, 
+      author={Dongjie Cheng and Ruifeng Yuan and Yongqi Li and Runyang You and Wenjie Wang and Liqiang Nie and Lei Zhang and Wenjie Li},
+      year={2026},
+      eprint={2601.17761},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.17761}, 
 }
 ```
 
